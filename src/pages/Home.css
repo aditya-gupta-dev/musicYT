@@ -1,0 +1,14 @@
+.navbar {
+    position: fixed;
+}
+
+.title {
+    flex-grow: 1;
+    font-weight: bold;
+}
+
+.inputGroup {
+    padding: 14px;
+    display: flex;
+    flex-direction: row;
+}
