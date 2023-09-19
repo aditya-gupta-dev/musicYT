@@ -1,7 +1,11 @@
+import { Typography } from "@mui/material";
+
 export default function Error() {
     return (
         <>
-            404
+            <Typography>
+                Page Not Found
+            </Typography>
         </>
     );
 }
