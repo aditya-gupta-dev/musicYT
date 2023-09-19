@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Search } from '@mui/icons-material';
 import { Button, Typography, Toolbar, AppBar, Paper, TextField, Fab, Stack, CircularProgress } from '@mui/material';
 import './Home.css';
-import Video from '../components/Video';
 import { getVideos } from '../api';
 import VideoList from '../components/VideoList';
 
