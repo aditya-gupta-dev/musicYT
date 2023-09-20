@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import SavedSnackbar from './SavedSnackbar';
+import { getAudio } from '../api';
 
 function titleSlice(title) {
   if(title.length > 45) {
@@ -15,13 +16,26 @@ function titleSlice(title) {
   }
 }
 
-export default function Video({video}) {
+export default function Video({video, urlSetter}) {
 
   const [isOpen, setIsOpen] = useState(false);
+  const [data, setData] = useState("");
 
   const onSavedButtonClick = () => {
     setIsOpen(true);
   }
+
+  const onListenButtonClick = async () => {
+    setData('getting data...');
+
+    const res = await getAudio(video.id);
+    if(res !== null) {
+      const size = Math.floor(res.contentLength / (1024 * 1024));
+      
+      setData(`Size : ${size} MB`);
+      urlSetter(res.url);
+    }
+  } 
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -43,9 +57,12 @@ export default function Video({video}) {
           <Typography gutterBottom variant="h5" component="div">
             { titleSlice(video.title) }
           </Typography>
+          <Typography variant='body1'>
+            { data }
+          </Typography>
         </CardContent>
         <CardActions>
-          <Button size="medium" variant='outlined'>Listen</Button>
+          <Button size="medium" variant='outlined' onClick={onListenButtonClick}>Listen</Button>
           <Button size="medium" variant='outlined'>
             <a href={`https://youtu.be/${video.id}`} style={{textDecoration: 'none'}}>Watch</a>
           </Button>
