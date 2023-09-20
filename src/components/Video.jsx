@@ -35,7 +35,7 @@ export default function Video({video, urlSetter}) {
       setData(`Size : ${size} MB`);
       urlSetter(res.url);
     } else {
-      setData('Unable to fetch its audio');
+      setData('Sorry, Unable to fetch its audio');
     }
   } 
 
