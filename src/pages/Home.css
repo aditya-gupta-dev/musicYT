@@ -18,3 +18,8 @@
     margin-top: 10px;
     width: 96vw;
 }
+
+.link {
+    text-decoration: none;
+    color: inherit;
+}

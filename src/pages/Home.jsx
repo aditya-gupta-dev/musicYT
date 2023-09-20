@@ -4,6 +4,7 @@ import { Button, Typography, Toolbar, AppBar, Paper, TextField, Fab, Stack, Circ
 import './Home.css';
 import { getVideos } from '../api';
 import Video from '../components/Video';
+import { Link } from 'react-router-dom';
 
 function Home() {
 
@@ -29,7 +30,9 @@ function Home() {
                     <Typography variant="h5" className='title'>
                         MusicYT
                     </Typography>
-                    <Button color="inherit">Starred</Button>
+                    <Button color="inherit">
+                        <Link to='/saved' className='link'>Saved</Link>
+                    </Button>
                     <Button color="inherit">Settings</Button>
                     <Button color="inherit">About</Button>
                 </Toolbar>
