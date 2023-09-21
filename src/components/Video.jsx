@@ -9,42 +9,42 @@ import SavedSnackbar from './SavedSnackbar';
 import { getAudio } from '../api';
 
 function titleSlice(title) {
-  if(title.length > 45) {
+  if (title.length > 45) {
     return `${title.slice(0, 45)}...`;
   } else {
     return title;
   }
 }
 
-export default function Video({video, urlSetter}) {
+export default function Video({ video, urlSetter }) {
 
   const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState({ contentLength: '', url: null});
+  const [data, setData] = useState({ contentLength: '', url: null });
 
   const onSavedButtonClick = () => {
     setIsOpen(true);
-    localStorage.setItem(video.id, JSON.stringify(data));
+    localStorage.setItem(video.id, JSON.stringify(video));
   }
 
   const onListenButtonClick = async () => {
-    setData({ contentLength: 'getting data...', url: null});
-    
+    setData({ contentLength: 'getting data...', url: null });
+
     const res = await getAudio(video.id);
-    if(res !== null) {
+    if (res !== null) {
       const size = Math.floor(res.contentLength / (1024 * 1024));
-      
-      setData({ contentLength: `Size : ${size} MB`, url: res.url});
+
+      setData({ contentLength: `Size : ${size} MB`, url: res.url });
       urlSetter(res.url);
     } else {
-      setData({contentLength: "Error occurred", url: null});
+      setData({ contentLength: "Error occurred", url: null });
     }
-  } 
+  }
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
-  
+
     setIsOpen(false);
   };
 
@@ -58,7 +58,7 @@ export default function Video({video, urlSetter}) {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            { titleSlice(video.title) }
+            {titleSlice(video.title)}
           </Typography>
           <Typography variant='body1'>
             {data.contentLength}
@@ -67,12 +67,12 @@ export default function Video({video, urlSetter}) {
         <CardActions>
           <Button size="medium" variant='outlined' onClick={onListenButtonClick}>Listen</Button>
           <Button size="medium" variant='outlined'>
-            <a href={`https://youtu.be/${video.id}`} style={{textDecoration: 'none'}}>Watch</a>
+            <a href={`https://youtu.be/${video.id}`} style={{ textDecoration: 'none' }}>Watch</a>
           </Button>
           <Button size="medium" variant='outlined' onClick={onSavedButtonClick}>Save</Button>
         </CardActions>
       </Card>
-      <SavedSnackbar isOpen={isOpen} handleClose={handleClose}/>
+      <SavedSnackbar isOpen={isOpen} handleClose={handleClose} />
     </>
   );
 }
