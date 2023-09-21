@@ -19,23 +19,24 @@ function titleSlice(title) {
 export default function Video({video, urlSetter}) {
 
   const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState("");
+  const [data, setData] = useState({ contentLength: '', url: '', title: video.title });
 
   const onSavedButtonClick = () => {
     setIsOpen(true);
+    localStorage.setItem('song', JSON.stringify(data));
   }
 
   const onListenButtonClick = async () => {
-    setData('getting data...');
-
+    setData({ contentLength: 'getting data...', url: '', title: video.title});
+    
     const res = await getAudio(video.id);
     if(res !== null) {
       const size = Math.floor(res.contentLength / (1024 * 1024));
       
-      setData(`Size : ${size} MB`);
+      setData({ contentLength: `Size : ${size} MB`, url: res.url, title: video.title });
       urlSetter(res.url);
     } else {
-      setData('Sorry, Unable to fetch its audio');
+      setData({contentLength: Failed, url: null, title: video.title});
     }
   } 
 
@@ -60,7 +61,7 @@ export default function Video({video, urlSetter}) {
             { titleSlice(video.title) }
           </Typography>
           <Typography variant='body1'>
-            { data }
+            {data.contentLength}
           </Typography>
         </CardContent>
         <CardActions>
