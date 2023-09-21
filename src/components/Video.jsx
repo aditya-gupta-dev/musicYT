@@ -19,7 +19,7 @@ function titleSlice(title) {
 export default function Video({video, urlSetter}) {
 
   const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState({ contentLength: '', url: null, title: video.title });
+  const [data, setData] = useState({ contentLength: '', url: null});
 
   const onSavedButtonClick = () => {
     setIsOpen(true);
@@ -27,16 +27,16 @@ export default function Video({video, urlSetter}) {
   }
 
   const onListenButtonClick = async () => {
-    setData({ contentLength: 'getting data...', url: null, title: video.title});
+    setData({ contentLength: 'getting data...', url: null});
     
     const res = await getAudio(video.id);
     if(res !== null) {
       const size = Math.floor(res.contentLength / (1024 * 1024));
       
-      setData({ contentLength: `Size : ${size} MB`, url: res.url, title: video.title });
+      setData({ contentLength: `Size : ${size} MB`, url: res.url});
       urlSetter(res.url);
     } else {
-      setData({contentLength: undefined, url: null, title: video.title});
+      setData({contentLength: "Error occurred", url: null});
     }
   } 
 
