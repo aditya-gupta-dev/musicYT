@@ -19,15 +19,15 @@ function titleSlice(title) {
 export default function Video({video, urlSetter}) {
 
   const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState({ contentLength: '', url: '', title: video.title });
+  const [data, setData] = useState({ contentLength: '', url: null, title: video.title });
 
   const onSavedButtonClick = () => {
     setIsOpen(true);
-    localStorage.setItem('song', JSON.stringify(data));
+    localStorage.setItem(video.id, JSON.stringify(data));
   }
 
   const onListenButtonClick = async () => {
-    setData({ contentLength: 'getting data...', url: '', title: video.title});
+    setData({ contentLength: 'getting data...', url: null, title: video.title});
     
     const res = await getAudio(video.id);
     if(res !== null) {
@@ -36,7 +36,7 @@ export default function Video({video, urlSetter}) {
       setData({ contentLength: `Size : ${size} MB`, url: res.url, title: video.title });
       urlSetter(res.url);
     } else {
-      setData({contentLength: Failed, url: null, title: video.title});
+      setData({contentLength: undefined, url: null, title: video.title});
     }
   } 
 
