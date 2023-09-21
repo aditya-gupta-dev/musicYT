@@ -1,8 +1,12 @@
 import { Typography, Button, AppBar, IconButton, Toolbar } from "@mui/material";
 import { Link } from 'react-router-dom';
 import { ArrowBack } from '@mui/icons-material';
+import { useEffect } from "react";
 
 export default function Saved() {
+    useEffect(() => {
+        console.log("page inited");
+    }, []);
     return (
         <>
             <AppBar className='navbar'>
