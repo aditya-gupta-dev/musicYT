@@ -33,7 +33,9 @@ function Home() {
                     <Button color="inherit">
                         <Link to='/saved' className='link'>Saved</Link>
                     </Button>
-                    <Button color="inherit">About</Button>
+                    <Button color="inherit">
+                        <Link to='/about' className='link'>About</Link>
+                    </Button>
                 </Toolbar>
             </AppBar>
 
