@@ -44,7 +44,7 @@ function Home() {
             </Stack>
 
             <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={6}>
-                <audio src={url} className='audioPlayer' controls />
+                <audio src={url} className='audioPlayer' controls loop/>
                 <div className='inputGroup'>
                     <TextField variant='filled' label='enter your query' value={query} onChange={(e) => setQuery(e.target.value)} fullWidth />
                     <Fab color='primary' onClick={onSearchButtonClick}>
