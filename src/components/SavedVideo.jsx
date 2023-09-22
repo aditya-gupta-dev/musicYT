@@ -1,11 +1,13 @@
 import { Typography } from "@mui/material";
 import { titleSlice } from '../utils/utils';
 import { Card, CardMedia, CardContent, CardActions, Button } from '@mui/material';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getAudio } from "../api";
 
 export default function SavedVideo({ video }) {
 
     const [removedText, setRemovedText] = useState("Remove");
+    const [url, setUrl] = useState("");
 
     const onRemoveButtonClick = () => {
         if(removedText !== "Removed") {
@@ -13,6 +15,13 @@ export default function SavedVideo({ video }) {
             setRemovedText("Removed");
         }
     }
+
+    useEffect(() => {
+        getAudio(video.id)
+        .then((res) => {
+            setUrl(res.url);
+        })
+    }, [video.id]);
 
     return (
         <>
@@ -28,7 +37,7 @@ export default function SavedVideo({ video }) {
                     </Typography>
                 </CardContent>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <audio src="" controls></audio>
+                    <audio src={url} controls></audio>
                 </div>
                 <CardActions sx={{ marginLeft: 2}}>
                     <Button size="medium" variant='outlined'>
