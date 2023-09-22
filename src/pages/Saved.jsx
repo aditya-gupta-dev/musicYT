@@ -1,11 +1,19 @@
 import { Typography, Button, AppBar, IconButton, Toolbar } from "@mui/material";
 import { Link } from 'react-router-dom';
 import { ArrowBack } from '@mui/icons-material';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Saved() {
+    
+    const [videos, setVideos] = useState([]);
+    
     useEffect(() => {
-        console.log("page inited");
+        const vals = Object.values(localStorage);
+        const values = [];
+        for(let i = 0; i < vals.length; i++) {
+            values.push(JSON.parse(vals[i]));
+        }
+        setVideos(values);
     }, []);
     return (
         <>
@@ -26,6 +34,7 @@ export default function Saved() {
                     </Button>
                 </Toolbar>
             </AppBar>
+
         </>
     );
 }
