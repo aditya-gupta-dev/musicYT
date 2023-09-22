@@ -27,8 +27,10 @@ export default function SavedVideo({ video }) {
                         {titleSlice(video.title)}
                     </Typography>
                 </CardContent>
-                <CardActions>
-                    <Button size="medium" variant='outlined'>Listen</Button>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <audio src="" controls></audio>
+                </div>
+                <CardActions sx={{ marginLeft: 2}}>
                     <Button size="medium" variant='outlined'>
                         <a href={`https://youtu.be/${video.id}`} style={{ textDecoration: 'none' }}>Watch</a>
                     </Button>
