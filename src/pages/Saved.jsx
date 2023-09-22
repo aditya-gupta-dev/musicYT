@@ -2,6 +2,7 @@ import { Typography, Button, AppBar, IconButton, Toolbar } from "@mui/material";
 import { Link } from 'react-router-dom';
 import { ArrowBack } from '@mui/icons-material';
 import { useEffect, useState } from "react";
+import SavedVideo from "../components/SavedVideo";
 
 export default function Saved() {
     
@@ -34,6 +35,8 @@ export default function Saved() {
                     </Button>
                 </Toolbar>
             </AppBar>
+
+            { videos.map((vid, ind, arr) => <SavedVideo video={vid}/>) }
 
         </>
     );
