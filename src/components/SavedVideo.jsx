@@ -1,11 +1,15 @@
 import { Typography } from "@mui/material";
 import { titleSlice } from '../utils/utils';
 import { Card, CardMedia, CardContent, CardActions, Button } from '@mui/material';
+import { useState } from "react";
 
 export default function SavedVideo({ video }) {
 
+    const [removedText, setRemovedText] = useState("Remove");
+
     const onRemoveButtonClick = () => {
         localStorage.removeItem(video.id);
+        setRemovedText("Removed");
     }
 
     return (
@@ -26,7 +30,7 @@ export default function SavedVideo({ video }) {
                     <Button size="medium" variant='outlined'>
                         <a href={`https://youtu.be/${video.id}`} style={{ textDecoration: 'none' }}>Watch</a>
                     </Button>
-                    <Button size="medium" variant='outlined' onClick={onRemoveButtonClick}>Remove</Button>
+                    <Button size="medium" variant='outlined' onClick={onRemoveButtonClick}>{removedText}</Button>
                 </CardActions>
             </Card>
         </>
