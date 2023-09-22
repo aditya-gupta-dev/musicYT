@@ -7,14 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import SavedSnackbar from './SavedSnackbar';
 import { getAudio } from '../api';
-
-function titleSlice(title) {
-  if (title.length > 45) {
-    return `${title.slice(0, 45)}...`;
-  } else {
-    return title;
-  }
-}
+import { titleSlice } from '../utils/utils';
 
 export default function Video({ video, urlSetter }) {
 
