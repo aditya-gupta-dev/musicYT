@@ -2,10 +2,10 @@ import { Typography } from "@mui/material";
 import { titleSlice } from '../utils/utils';
 import { Card, CardMedia, CardContent, CardActions, Button } from '@mui/material';
 
-export default function SavedVideo({ video, videos, setVideos }) {
+export default function SavedVideo({ video }) {
 
     const onRemoveButtonClick = () => {
-
+        localStorage.removeItem(video.id);
     }
 
     return (
