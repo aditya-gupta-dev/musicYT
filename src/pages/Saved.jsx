@@ -17,7 +17,7 @@ export default function Saved() {
         }
         setVideos(values);
     }, []);
-    
+
     return (
         <>
             <AppBar className='navbar'>
@@ -39,7 +39,7 @@ export default function Saved() {
             </AppBar>
 
             <Stack marginTop={10} marginBottom={18} alignItems="center" justifyContent="center">
-                { videos.map((vid, ind, arr) => <SavedVideo key={ind} video={vid}/>) }
+                { videos.map((vid, ind, arr) => <SavedVideo key={ind} video={vid} videos={videos} setVideos={setVideos}/>) }
             </Stack>
         </>
     );
