@@ -38,7 +38,7 @@ export default function Saved() {
                 </Toolbar>
             </AppBar>
 
-            <Stack marginTop={10} marginBottom={18} alignItems="center" justifyContent="center">
+            <Stack marginTop={10} marginBottom={1} alignItems="center" justifyContent="center">
                 { videos.map((vid, ind, arr) => <SavedVideo key={ind} video={vid}/>) }
             </Stack>
         </>
