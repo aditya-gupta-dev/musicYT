@@ -3,7 +3,11 @@ import { titleSlice } from '../utils/utils';
 import { Card, CardMedia, CardContent, CardActions, Button } from '@mui/material';
 
 export default function SavedVideo({ video }) {
-    console.log("Component rendered");
+
+    const onRemoveButtonClick = () => {
+
+    }
+
     return (
         <>
             <Card sx={{ maxWidth: 345, minWidth: 345, marginTop: 4 }}>
@@ -22,7 +26,7 @@ export default function SavedVideo({ video }) {
                     <Button size="medium" variant='outlined'>
                         <a href={`https://youtu.be/${video.id}`} style={{ textDecoration: 'none' }}>Watch</a>
                     </Button>
-                    <Button size="medium" variant='outlined'>Remove</Button>
+                    <Button size="medium" variant='outlined' onClick={onRemoveButtonClick}>Remove</Button>
                 </CardActions>
             </Card>
         </>
