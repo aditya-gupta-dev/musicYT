@@ -2,6 +2,7 @@ import { Typography, Button, AppBar, IconButton, Toolbar } from "@mui/material";
 import { Link } from 'react-router-dom';
 import { ArrowBack } from '@mui/icons-material';
 import { useEffect, useState } from "react";
+import { Stack } from '@mui/material';
 import SavedVideo from "../components/SavedVideo";
 
 export default function Saved() {
