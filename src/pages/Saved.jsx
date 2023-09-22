@@ -1,46 +1,42 @@
-import { Typography, Button, AppBar, IconButton, Toolbar } from "@mui/material";
-import { Link } from 'react-router-dom';
-import { ArrowBack } from '@mui/icons-material';
-import { useEffect, useState } from "react";
-import { Stack } from '@mui/material';
-import SavedVideo from "../components/SavedVideo";
+import { Typography } from "@mui/material";
+import { titleSlice } from '../utils/utils';
+import { Card, CardMedia, CardContent, CardActions, Button } from '@mui/material';
+import { useState } from "react";
 
-export default function Saved() {
-    
-    const [videos, setVideos] = useState([]);
-    
-    useEffect(() => {
-        const vals = Object.values(localStorage);
-        const values = [];
-        for(let i = 0; i < vals.length; i++) {
-            values.push(JSON.parse(vals[i]));
+export default function SavedVideo({ video }) {
+
+    const [removedText, setRemovedText] = useState("Remove");
+
+    const onRemoveButtonClick = () => {
+        if(removedText !== "Removed") {
+            localStorage.removeItem(video.id);
+            setRemovedText("Removed");
         }
-        setVideos(values);
-    }, []);
+    }
 
     return (
         <>
-            <AppBar className='navbar'>
-                <Toolbar style={{ display: 'flex', alignItems: 'center' }}>
-                    <IconButton sx={{ marginRight: 2 }}>
-                        <Link to='/'>
-                            <ArrowBack sx={{ color: 'white', fontSize: '1.5rem' }} />
-                        </Link>
-                    </IconButton>
-                    <Typography variant="h5" className='title'>
-                        Saved
+            <Card sx={{ maxWidth: 345, minWidth: 345, marginTop: 4 }}>
+                <CardMedia
+                    sx={{ height: 140 }}
+                    image={video.thumbnailUrl}
+                    title="thumbnail"
+                />
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                        {titleSlice(video.title)}
                     </Typography>
-                    <Button color="inherit">
-                        <Link to='/about' className='link'>
-                            About
-                        </Link>
+                </CardContent>
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <audio src="" controls></audio>
+                </div>
+                <CardActions sx={{ marginLeft: 2 }}>
+                    <Button size="medium" variant='outlined'>
+                        <a href={`https://youtu.be/${video.id}`} style={{ textDecoration: 'none' }}>Watch</a>
                     </Button>
-                </Toolbar>
-            </AppBar>
-
-            <Stack marginTop={10} marginBottom={18} alignItems="center" justifyContent="center">
-                { videos.map((vid, ind, arr) => <SavedVideo key={ind} video={vid}/>) }
-            </Stack>
+                    <Button size="medium" variant='outlined' onClick={onRemoveButtonClick}>{removedText}</Button>
+                </CardActions>
+            </Card>
         </>
     );
 }
