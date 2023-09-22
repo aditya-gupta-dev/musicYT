@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import { titleSlice } from '../utils/utils';
 import { Card, CardMedia, CardContent, CardActions, Button } from '@mui/material';
 
-export default function SavedVideo({ video }) {
+export default function SavedVideo({ video, videos, setVideos }) {
 
     const onRemoveButtonClick = () => {
 
