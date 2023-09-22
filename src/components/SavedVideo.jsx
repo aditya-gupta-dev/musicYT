@@ -8,8 +8,10 @@ export default function SavedVideo({ video }) {
     const [removedText, setRemovedText] = useState("Remove");
 
     const onRemoveButtonClick = () => {
-        localStorage.removeItem(video.id);
-        setRemovedText("Removed");
+        if(removedText !== "Removed") {
+            localStorage.removeItem(video.id);
+            setRemovedText("Removed");
+        }
     }
 
     return (
