@@ -37,7 +37,7 @@ export default function SavedVideo({ video }) {
                     </Typography>
                 </CardContent>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <audio src={url} controls></audio>
+                    <audio src={url} controls loop></audio>
                 </div>
                 <CardActions sx={{ marginLeft: 2}}>
                     <Button size="medium" variant='outlined'>
