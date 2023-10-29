@@ -8,3 +8,6 @@ I identified a problem that some songs were not available on spotify & on youtub
 
 ## Solution
 I used youtube's data API and Pytube to stream the audio format on my website. Hence a music player.
+
+## Tech Stack 
+### Frontend
