@@ -12,6 +12,7 @@ I used youtube's data API and Pytube to stream the audio format on my website. H
 ## Tech Stack 
 ### Frontend
 React + Material UI 
+React Router
 
 ### Backend
 Flask with replit
