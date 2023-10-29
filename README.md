@@ -15,3 +15,5 @@ React + Material UI
 
 ### Backend
 Flask with replit
+
+Api is hosted on replit & the website on netlify 
