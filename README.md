@@ -16,3 +16,4 @@ React + Material UI, React Router
 ### Backend
 Flask with replit, Api is hosted on replit & the website on netlify 
 
+Thanks for reading :)
