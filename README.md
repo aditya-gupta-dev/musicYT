@@ -11,10 +11,8 @@ I used youtube's data API and Pytube to stream the audio format on my website. H
 
 ## Tech Stack 
 ### Frontend
-React + Material UI 
-React Router
+React + Material UI, React Router
 
 ### Backend
-Flask with replit
+Flask with replit, Api is hosted on replit & the website on netlify 
 
-Api is hosted on replit & the website on netlify 
